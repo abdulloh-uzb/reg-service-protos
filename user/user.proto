@@ -1,0 +1,37 @@
+syntax="proto3";
+
+package user;
+
+service RegisterService{
+    rpc RegisterUser(RegUserReq) returns(UserResp);
+    rpc LoginUser(LoginUserReq) returns (UserResp);
+    rpc VerifyUser(VerifyUserReq) returns(Empty);
+}
+
+message RegUserReq{
+    string username = 1;
+    string password = 2;
+    string email = 3;
+}
+
+message LoginUserReq { 
+    string username = 1;
+    string password = 2;
+}
+
+message UserResp {
+    int64 id = 1;
+    string username = 2;
+    string password = 3;
+    string email = 4;
+    bool verify = 5;
+}
+
+message VerifyUserReq{
+    int64 code = 1;
+    string email = 2;
+}
+
+message Empty{}
+
+
